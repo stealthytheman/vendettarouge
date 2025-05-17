@@ -1,0 +1,32 @@
+{
+    "dialogue": [
+      {
+        "id": "start",
+        "speaker": "Pop Cat",
+        "portrait": "cat_scared",
+        "text": "Who, are you? Where Am I?",
+        "next": "line2"
+      },
+      {
+        "id": "line2",
+        "speaker": "Grumpy Cat",
+        "portrait": "cat_grumpy",
+        "text": "you're competing in a hackathon. and im going to take you down with my mid ass scratch game.",
+        "next": "line3"
+      },
+      {
+        "id": "line3",
+        "speaker": "Pop Cat",
+        "portrait": "cat_scared",
+        "text": "hah, scratch? pathetic!! let me cook.",
+        "next": "end"
+      },
+      {
+        "id": "end",
+        "speaker": "Narrator",
+        "portrait": "narrator_cat",
+        "text": "crowd cheering... (who won?)"
+      }
+    ]
+  }
+  
