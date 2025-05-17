@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      trophyglow_0: -5811233795316811663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
