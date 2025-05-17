@@ -46,6 +46,10 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public Image portraitImage;
 
+    // Add these lines:
+    public GameObject nameBox;
+    public GameObject textBox;
+
     private Dictionary<string, DialogueEntry> dialogueMap;
     private DialogueEntry currentEntry;
 
@@ -104,6 +108,10 @@ public class DialogueManager : MonoBehaviour
 
         dialogueActive = true;
 
+        // Show the objects
+        if (nameBox != null) nameBox.SetActive(true);
+        if (textBox != null) textBox.SetActive(true);
+
         currentEntry = dialogueMap[id];
         speakerText.transform.parent.gameObject.SetActive(true); // show the text
         speakerText.text = currentEntry.speaker;
@@ -148,6 +156,10 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueActive = false;
             speakerText.transform.parent.gameObject.SetActive(false); // hide the text
+
+            // Hide the objects
+            if (nameBox != null) nameBox.SetActive(false);
+            if (textBox != null) textBox.SetActive(false);
         }
     }
 
