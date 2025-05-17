@@ -1,8 +1,9 @@
+using System;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class HoverToolTipHighlight1 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public string description;
     public GameObject normalObject;
@@ -13,7 +14,7 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
     public string dialogueId;
     public string jsonFilePath;
 
-    public int flagName;
+    public bool bedClicked = false;
 
     void Start()
     {
@@ -34,6 +35,10 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
     public void OnPointerEnter(PointerEventData eventData)
     {
         //Debug.Log("Mouse Entered");
+        if (roomInteractionManager == null)
+        {
+            Debug.LogError("RoomInteractionManager is null!");
+        }
         ToolTip.Instance.Show(description);
 
         normalObject.SetActive(false);
@@ -61,15 +66,7 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
         {
             Debug.LogWarning("DialogueManager or dialogueId not set!");
         }
-
-        if (roomInteractionManager == null)
-        {
-            Debug.LogError("RoomInteractionManager is null!");
-        }
-        else
-        {
-            roomInteractionManager.MarkFlagDone(flagName);
-        }
-    
+        
+        bedClicked = true; // Only set true when the bed is actually clicked
     }
 }

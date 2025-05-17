@@ -59,10 +59,24 @@ public class DialogueManager : MonoBehaviour
 
     private bool dialogueActive = false;
 
+    public GameObject dialogueBox;
+    public GameObject nameBox2;
+    public GameObject textName;
+    public GameObject textText;
+    public GameObject portrait2;
+
     void Start()
     {
-        LoadDialogue("dialogue.json");
-        StartDialogue("start"); // start the dialogue with the ID "start"
+
+
+        dialogueBox.SetActive(false);
+        nameBox2.SetActive(false);
+        textName.SetActive(false);
+        textText.SetActive(false);
+        portrait2.SetActive(false);
+
+        
+
     }
 
     void Update()
@@ -86,7 +100,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void LoadDialogue(string filename)
+    public void LoadDialogue(string filename)
     {
         string path = Path.Combine(Application.streamingAssetsPath, filename);
         string json = File.ReadAllText(path);
@@ -97,6 +111,12 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueMap[entry.id] = entry;
         }
+
+        dialogueBox.SetActive(true);
+        nameBox2.SetActive(true);
+        textName.SetActive(true);
+        textText.SetActive(true);
+        portrait2.SetActive(true);
     }
 
     public void ShowDialogue(string id)
@@ -108,12 +128,17 @@ public class DialogueManager : MonoBehaviour
 
         dialogueActive = true;
 
+        // Ensure the parent GameObject is active
+        if (speakerText.transform.parent != null && !speakerText.transform.parent.gameObject.activeSelf)
+        {
+            speakerText.transform.parent.gameObject.SetActive(true);
+        }
+
         // Show the objects
         if (nameBox != null) nameBox.SetActive(true);
         if (textBox != null) textBox.SetActive(true);
 
         currentEntry = dialogueMap[id];
-        speakerText.transform.parent.gameObject.SetActive(true); // show the text
         speakerText.text = currentEntry.speaker;
         LoadPortrait(currentEntry.portrait);
 
