@@ -1,0 +1,26 @@
+{
+    "dialogue": [
+      {
+        "id": "start",
+        "speaker": "Colette",
+        "portrait": "PLACEHOLDER",
+        "text": "He was so weak. No wonder he was getting other people to do his dirty work for him.",
+        "next": "line2"
+      },
+      {
+        "id": "line2",
+        "speaker": "Colette",
+        "portrait": "PLACEHOLDER",
+        "text": "Hmmm?",
+        "next": "line3"
+      },
+      {
+        "id": "line3",
+        "speaker": "Redacted",
+        "portrait": "none",
+        "text": "*she notices a watch on the ground*"
+      }
+    ]
+  }
+  
+  

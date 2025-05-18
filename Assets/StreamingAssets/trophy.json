@@ -1,0 +1,19 @@
+{
+    "dialogue": [
+      {
+        "id": "start",
+        "speaker": "Colette",
+        "portrait": "PLACEHOLDER",
+        "text": "What a revolting human being. He’s someone who uses his money to hire hitmen for his own benefit.",
+        "next": "line2"
+      },
+      {
+        "id": "line2",
+        "speaker": "Colette",
+        "portrait": "PLACEHOLDER",
+        "text": "He’s gonna get what’s coming."
+      }
+    ]
+  }
+  
+  
