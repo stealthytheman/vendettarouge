@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PersistentToolTipHighlight1 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -80,6 +81,6 @@ public class PersistentToolTipHighlight1 : MonoBehaviour, IPointerEnterHandler, 
         c.a = 1f;
         whiteOverlay.color = c;
 
-        // Now stays fully white
+        SceneManager.LoadScene("minigame");
     }
 }
