@@ -3,35 +3,35 @@
     {
       "id": "start",
       "speaker": "???",
-      "portrait": "PLACEHOLDER",
+      "portrait": "+++",
       "text": "Gabriel. Eloise. It’s a pleasure to see you. I wish it could’ve been for different circumstances.",
       "next": "line2"
     },
     {
       "id": "line2",
       "speaker": "Mom",
-      "portrait": "PLACEHOLDER",
+      "portrait": "mom",
       "text": "Pierre. Why are you here?",
       "next": "line3"
     },
     {
       "id": "line2",
       "speaker": "Mom",
-      "portrait": "PLACEHOLDER",
+      "portrait": "mom",
       "text": "Pierre. Why are you here?",
       "next": "line3"
     },
     {
       "id": "line3",
       "speaker": "???",
-      "portrait": "PLACEHOLDER",
+      "portrait": "+++",
       "text": "That won’t work on me. Word gets around, you know? Does your daughter know about your past?",
       "next": "line4"
     },
     {
       "id": "line4",
       "speaker": "???",
-      "portrait": "PLACEHOLDER",
+      "portrait": "+++",
       "text": "And your “valiant, selfless” decision to leave Notre Monde for a “better life” for her? A shame how that turned out.",
       "next": "line5"
     },
@@ -45,28 +45,28 @@
     {
       "id": "line6",
       "speaker": "Mom",
-      "portrait": "PLACEHOLDER",
+      "portrait": "mom",
       "text": "Pierre. Don’t you dare.",
       "next": "line7"
     },
     {
       "id": "line7",
       "speaker": "???",
-      "portrait": "PLACEHOLDER",
+      "portrait": "+++",
       "text": "Elliot, Alain, search the house for the child.",
       "next": "line8"
     },
     {
       "id": "line8",
       "speaker": "Dad",
-      "portrait": "PLACEHOLDER",
+      "portrait": "dad",
       "text": "You’ll have to get through us, first!",
       "next": "line9"
     },
     {
       "id": "line9",
       "speaker": "???",
-      "portrait": "PLACEHOLDER",
+      "portrait": "+++",
       "text": "You seem to have misunderstood. You are outnumbered here. There’s no escape now. It’s over.!",
       "next": "line10"
     },

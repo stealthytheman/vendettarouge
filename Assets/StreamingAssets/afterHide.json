@@ -3,35 +3,35 @@
       {
         "id": "start",
         "speaker": "Mom",
-        "portrait": "PLACEHOLDER",
+        "portrait": "mom",
         "text": "Gabriel.",
         "next": "line2"
       },
       {
         "id": "line2",
         "speaker": "Dad",
-        "portrait": "PLACEHOLDER",
+        "portrait": "dad",
         "text": "I know, Eloise. Colette, you remember hide and seek? We’re going to need you to hide for a little while right now, okay?",
         "next": "line3"
       },
       {
         "id": "line3",
         "speaker": "Little Colette",
-        "portrait": "none",
+        "portrait": "colette kid",
         "text": "But I don’t want to!",
         "next": "line4"
       },
       {
         "id": "line4",
         "speaker": "Mom",
-        "portrait": "none",
+        "portrait": "mom",
         "text": "Listen to Daddy, okay, honey?",
         "next": "line5"
       },
       {
         "id": "line5",
         "speaker": "Little Colette",
-        "portrait": "none",
+        "portrait": "colette kid",
         "text": "Okay...",
         "next": "line6"
       },

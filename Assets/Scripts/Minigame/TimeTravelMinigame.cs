@@ -25,22 +25,30 @@ public class TimeTravelMinigame : MonoBehaviour
 
     public SceneFader sceneFader; // Assign in Inspector
 
+    // New: Looping audio source for sound to start on scene load
+    public AudioSource loopingAudioSource;
+
     void Start()
     {
+        // Start looping audio immediately on scene load
+        if (loopingAudioSource != null)
+        {
+            loopingAudioSource.loop = true;
+            loopingAudioSource.Play();
+        }
+
         // Adjust difficulty and next scene based on flag
         if (GameFlags.cameFromRoom == 1)
         {
-            // Came from Room1 = easier difficulty
             scoreToPass = 10;
-            speed = 350f; // Adjust speed for easier difficulty
-            nextSceneName = "bedroom";  // Change this to your actual scene name
+            speed = 350f;
+            nextSceneName = "bedroom";
         }
         else if (GameFlags.cameFromRoom == 2)
         {
-            // Came from Room2.5 = harder difficulty
             scoreToPass = 15;
-            speed = 550f; // Adjust speed for harder difficulty
-            nextSceneName = "room3";            // Change this to your actual scene name
+            speed = 550f;
+            nextSceneName = "room3";
         }
 
         timer = gameDuration;
