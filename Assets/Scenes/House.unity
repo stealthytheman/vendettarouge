@@ -244,6 +244,8 @@ MonoBehaviour:
   clip1: {fileID: 8300000, guid: 407ac37b6eb9ed948ab95364b34dd8d8, type: 3}
   clip2: {fileID: 8300000, guid: 4d06d1b320f9ff342bd0389751524e80, type: 3}
   audioSource: {fileID: 1361012488}
+  backgroundLoopClip: {fileID: 8300000, guid: 8c035fe5984203044be08de8ed879abf, type: 3}
+  backgroundLoopSource: {fileID: 1361012488}
 --- !u!4 &111621121
 Transform:
   m_ObjectHideFlags: 0
@@ -335,6 +337,8 @@ MonoBehaviour:
   textName: {fileID: 1847205437}
   textText: {fileID: 1257816508}
   portrait2: {fileID: 523280620}
+  audioSource: {fileID: 1230663122}
+  typingSound: {fileID: 8300000, guid: 3aed623a12db3c9489e4625b89300978, type: 3}
 --- !u!4 &186968171
 Transform:
   m_ObjectHideFlags: 0
@@ -558,11 +562,19 @@ MonoBehaviour:
   highlightObject: {fileID: 196122241}
   dialogueManager: {fileID: 0}
   roomInteractionManager: {fileID: 0}
+  room2InteractionManager: {fileID: 0}
   dialogueId: start
   jsonFilePath: trophy.json
   flagName: 0
   audioSource: {fileID: 0}
   windowAudioClip: {fileID: 0}
+  afterDialogueClip: {fileID: 0}
+  followupStartClip: {fileID: 0}
+  secondaryLoopSource: {fileID: 0}
+  secondaryLoopClip: {fileID: 0}
+  objectToActivate: {fileID: 0}
+  followupJsonFile: afterHide.json
+  followupStartId: start
 --- !u!1 &304253191
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,11 +626,19 @@ MonoBehaviour:
   highlightObject: {fileID: 1091689959}
   dialogueManager: {fileID: 0}
   roomInteractionManager: {fileID: 0}
+  room2InteractionManager: {fileID: 0}
   dialogueId: start
   jsonFilePath: portrait.json
   flagName: 1
   audioSource: {fileID: 0}
   windowAudioClip: {fileID: 0}
+  afterDialogueClip: {fileID: 0}
+  followupStartClip: {fileID: 0}
+  secondaryLoopSource: {fileID: 0}
+  secondaryLoopClip: {fileID: 0}
+  objectToActivate: {fileID: 0}
+  followupJsonFile: afterHide.json
+  followupStartId: start
 --- !u!1 &317102402
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,11 +2131,19 @@ MonoBehaviour:
   highlightObject: {fileID: 320799156}
   dialogueManager: {fileID: 0}
   roomInteractionManager: {fileID: 0}
+  room2InteractionManager: {fileID: 0}
   dialogueId: start
   jsonFilePath: door.json
   flagName: 3
   audioSource: {fileID: 0}
   windowAudioClip: {fileID: 0}
+  afterDialogueClip: {fileID: 0}
+  followupStartClip: {fileID: 0}
+  secondaryLoopSource: {fileID: 0}
+  secondaryLoopClip: {fileID: 0}
+  objectToActivate: {fileID: 0}
+  followupJsonFile: afterHide.json
+  followupStartId: start
 --- !u!1 &727201686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,11 +2498,19 @@ MonoBehaviour:
   highlightObject: {fileID: 727201686}
   dialogueManager: {fileID: 0}
   roomInteractionManager: {fileID: 0}
+  room2InteractionManager: {fileID: 0}
   dialogueId: start
   jsonFilePath: book.json
   flagName: 2
   audioSource: {fileID: 0}
   windowAudioClip: {fileID: 0}
+  afterDialogueClip: {fileID: 0}
+  followupStartClip: {fileID: 0}
+  secondaryLoopSource: {fileID: 0}
+  secondaryLoopClip: {fileID: 0}
+  objectToActivate: {fileID: 0}
+  followupJsonFile: afterHide.json
+  followupStartId: start
 --- !u!1 &1057115831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3123,6 +3159,135 @@ PolygonCollider2D:
       - {x: 0.31, y: -0.01}
       - {x: 0.37, y: 0.07}
   m_UseDelaunayMesh: 0
+--- !u!1 &1230663121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1230663123}
+  - component: {fileID: 1230663122}
+  m_Layer: 0
+  m_Name: VNAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1230663122
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230663121}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1230663123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230663121}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.40761, y: -1.30228, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1257816508
 GameObject:
   m_ObjectHideFlags: 0
@@ -5479,3 +5644,4 @@ SceneRoots:
   - {fileID: 1200283281}
   - {fileID: 317102406}
   - {fileID: 1361012489}
+  - {fileID: 1230663123}

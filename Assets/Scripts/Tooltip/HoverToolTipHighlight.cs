@@ -22,6 +22,9 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
     public AudioClip afterDialogueClip;      // Second sound after first dialogue
     public AudioClip followupStartClip;      // Third sound before follow-up dialogue starts
 
+    public AudioSource secondaryLoopSource;  // NEW: Looping background audio
+    public AudioClip secondaryLoopClip;      // NEW: Clip to loop
+
     public GameObject objectToActivate;      // Object to enable after dialogue
     public string followupJsonFile = "afterHide.json";
     public string followupStartId = "start";
@@ -38,6 +41,14 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
 
         if (roomInteractionManager == null)
             roomInteractionManager = FindAnyObjectByType<RoomInteractionManager>();
+
+        // Start the secondary loop
+        if (secondaryLoopSource != null && secondaryLoopClip != null)
+        {
+            secondaryLoopSource.clip = secondaryLoopClip;
+            secondaryLoopSource.loop = true;
+            secondaryLoopSource.Play();
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -100,6 +111,12 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
 
     private IEnumerator PlayFollowupStartThenAfterClipAndDialogue()
     {
+        // Stop the secondary loop before playing the followup clip
+        if (secondaryLoopSource != null && secondaryLoopSource.isPlaying)
+        {
+            secondaryLoopSource.Stop();
+        }
+
         // Play followupStartClip first and wait for it to finish
         if (audioSource != null && followupStartClip != null)
         {
@@ -113,7 +130,7 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
             audioSource.PlayOneShot(afterDialogueClip);
         }
 
-        // Start loading and showing the follow-up dialogue at the same time as afterDialogueClip
+        // Start loading and showing the follow-up dialogue
         if (!string.IsNullOrEmpty(followupJsonFile) && !string.IsNullOrEmpty(followupStartId))
         {
             dialogueManager.OnDialogueComplete += HandleFollowupComplete;

@@ -6,7 +6,7 @@ public class AudioAndDialogue : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip firstClip;
     public AudioClip secondClip;
-    public AudioClip thirdClip;  // New clip to play alongside firstClip
+    public AudioClip thirdClip;  // Plays alongside firstClip if PlayFirstClipOnly is called
 
     public DialogueManager dialogueManager;
     public string dialogueId;
@@ -31,18 +31,24 @@ public class AudioAndDialogue : MonoBehaviour
 
     void PlayFullSequence()
     {
-        if (currentSequence != null) StopCoroutine(currentSequence);
-        if (audioSource.isPlaying) audioSource.Stop();
+        if (currentSequence != null)
+            StopCoroutine(currentSequence);
+
+        if (audioSource.isPlaying)
+            audioSource.Stop();
 
         currentSequence = StartCoroutine(PlayTwoClipsThenDialogue());
     }
 
     void PlayFirstClipOnly()
     {
-        if (currentSequence != null) StopCoroutine(currentSequence);
-        if (audioSource.isPlaying) audioSource.Stop();
+        if (currentSequence != null)
+            StopCoroutine(currentSequence);
 
-        // Play thirdClip alongside firstClip
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+
+        // Play thirdClip alongside firstClip using PlayOneShot (non-looping)
         if (thirdClip != null)
         {
             audioSource.PlayOneShot(thirdClip);
@@ -59,14 +65,20 @@ public class AudioAndDialogue : MonoBehaviour
             yield break;
         }
 
+        audioSource.loop = false;
+
+        // Play first clip
         audioSource.clip = firstClip;
         audioSource.Play();
         yield return new WaitForSeconds(firstClip.length);
 
+        // Play second clip (ensure not looping)
+        audioSource.loop = false;
         audioSource.clip = secondClip;
         audioSource.Play();
         yield return new WaitForSeconds(secondClip.length);
 
+        // Start dialogue after both clips
         if (dialogueManager != null && !string.IsNullOrEmpty(dialogueId))
         {
             dialogueManager.LoadDialogue(jsonFilePath);
@@ -89,11 +101,13 @@ public class AudioAndDialogue : MonoBehaviour
         }
 
         footstepsPlaying = true;
+
+        audioSource.loop = false;
         audioSource.clip = firstClip;
         audioSource.Play();
         yield return new WaitForSeconds(firstClip.length);
-        footstepsPlaying = false;
 
+        footstepsPlaying = false;
         currentSequence = null;
     }
 }

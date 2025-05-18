@@ -50,6 +50,11 @@ public class DialogueManager : MonoBehaviour
     // New event that fires when dialogue finishes completely
     public event Action OnDialogueComplete;
 
+    // type sound
+    public AudioSource audioSource;
+    public AudioClip typingSound;
+
+
     void Start()
     {
         dialogueBox.SetActive(false);
@@ -136,7 +141,14 @@ public class DialogueManager : MonoBehaviour
             }
 
             dialogueText.text += c;
-            yield return new WaitForSeconds(0.08f);
+
+            // Play the typing sound if it's a visible character
+            if (!char.IsWhiteSpace(c) && typingSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(typingSound);
+            }
+
+            yield return new WaitForSeconds(0.05f);
         }
 
         isTyping = false;

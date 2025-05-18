@@ -16,6 +16,19 @@ public class RoomInteractionManager : MonoBehaviour
     public AudioClip clip2; // Assign in Inspector
     public AudioSource audioSource; // Assign in Inspector
 
+    public AudioClip backgroundLoopClip; // Assign in Inspector
+    public AudioSource backgroundLoopSource; // Assign in Inspector
+
+    void Start()
+    {
+        if (backgroundLoopSource != null && backgroundLoopClip != null)
+        {
+            backgroundLoopSource.clip = backgroundLoopClip;
+            backgroundLoopSource.loop = true;
+            backgroundLoopSource.Play();
+        }
+    }
+
     public void MarkFlagDone(int identifier)
     {
         flags[identifier] = true;
@@ -171,6 +184,12 @@ public class RoomInteractionManager : MonoBehaviour
             // --- Play audio clips before continuing ---
             if (audioSource != null)
             {
+                // Stop background loop
+                if (backgroundLoopSource != null && backgroundLoopSource.isPlaying)
+                {
+                    backgroundLoopSource.Stop();
+                }
+
                 if (clip1 != null)
                 {
                     audioSource.clip = clip1;
