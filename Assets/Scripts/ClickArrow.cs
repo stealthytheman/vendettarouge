@@ -3,7 +3,7 @@ using UnityEngine;
 public class ClickArrow : MonoBehaviour
 {
     public ScrollBackground scrollBackground;
-    public bool isRightArrow = true; // Set in Inspector: true for right, false for left
+    public bool isRightArrow = true; 
 
     void Start()
     {

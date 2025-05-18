@@ -12,8 +12,8 @@ public class PersistentToolTipHighlight1 : MonoBehaviour, IPointerEnterHandler, 
     public string jsonFilePath;
 
     public GameObject watch;
-    public UnityEngine.UI.Image whiteOverlay; // Assign in Inspector
-    public AudioClip flashSoundClip;          // Assign in Inspector
+    public UnityEngine.UI.Image whiteOverlay; 
+    public AudioClip flashSoundClip; 
 
     private AudioSource audioSource;
 

@@ -5,8 +5,8 @@ using System.Collections;
 
 public class PlayDialogueRoom3 : MonoBehaviour
 {
-    public DialogueManager dialogueManager;        // Assign in Inspector
-    public Image screenOverlay;                    // Assign in Inspector
+    public DialogueManager dialogueManager;      
+    public Image screenOverlay;         
 
     public string firstDialogueFileName = "intro.json";
     public string firstStartID = "start";
@@ -16,9 +16,9 @@ public class PlayDialogueRoom3 : MonoBehaviour
 
     public string nextSceneName = "NextScene";
 
-    public AudioClip introAudioClip;               // 🔁 Loops until first dialogue ends
-    public AudioClip endAudioClip;                 // Plays after first dialogue
-    public GameObject blackBox;                    // Shows after first dialogue
+    public AudioClip introAudioClip;
+    public AudioClip endAudioClip; 
+    public GameObject blackBox; 
 
     private AudioSource audioSource;
     private bool playedFirstDialogue = false;

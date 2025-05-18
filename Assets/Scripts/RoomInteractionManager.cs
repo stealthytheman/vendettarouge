@@ -4,20 +4,20 @@ public class RoomInteractionManager : MonoBehaviour
 {
     private bool[] flags = new bool[4];
     public GameObject hidetext;
-    public UnityEngine.UI.Image screenOverlay; // Assign in Inspector
+    public UnityEngine.UI.Image screenOverlay;
 
-    public HoverToolTipHighlight1 bedHighlight; // Assign in Inspector
-    public GameObject floorImage; // Assign in Inspector
-    public GameObject room; // Assign in Inspector
+    public HoverToolTipHighlight1 bedHighlight; 
+    public GameObject floorImage; 
+    public GameObject room; 
 
-    public DialogueManager dialogueManager; // Assign in Inspector
+    public DialogueManager dialogueManager;
 
-    public AudioClip clip1; // Assign in Inspector
-    public AudioClip clip2; // Assign in Inspector
-    public AudioSource audioSource; // Assign in Inspector
+    public AudioClip clip1;
+    public AudioClip clip2;
+    public AudioSource audioSource;
 
-    public AudioClip backgroundLoopClip; // Assign in Inspector
-    public AudioSource backgroundLoopSource; // Assign in Inspector
+    public AudioClip backgroundLoopClip; 
+    public AudioSource backgroundLoopSource;
 
     void Start()
     {
