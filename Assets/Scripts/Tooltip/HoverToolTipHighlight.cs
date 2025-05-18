@@ -22,8 +22,8 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
     public AudioClip afterDialogueClip;      // Second sound after first dialogue
     public AudioClip followupStartClip;      // Third sound before follow-up dialogue starts
 
-    public AudioSource secondaryLoopSource;  // NEW: Looping background audio
-    public AudioClip secondaryLoopClip;      // NEW: Clip to loop
+    public AudioSource secondaryLoopSource;
+    public AudioClip secondaryLoopClip;  
 
     public GameObject objectToActivate;      // Object to enable after dialogue
     public string followupJsonFile = "afterHide.json";

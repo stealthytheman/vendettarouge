@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      colette 2b_0: -4955630499059407746
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
