@@ -1453,6 +1453,7 @@ Transform:
   - {fileID: 1050624997}
   - {fileID: 727189314}
   - {fileID: 224930809}
+  - {fileID: 1721710701}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &479107118
@@ -1664,7 +1665,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4298056599330406823, guid: df2ef546ae11fd844b3241a7eb7da2ba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4170,7 +4171,7 @@ RectTransform:
   m_Children:
   - {fileID: 2081859738}
   - {fileID: 1902988440}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 479107117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5471,7 +5472,6 @@ SceneRoots:
   - {fileID: 1112659002}
   - {fileID: 186968171}
   - {fileID: 479107117}
-  - {fileID: 1721710701}
   - {fileID: 111621121}
   - {fileID: 162955434}
   - {fileID: 353675985}

@@ -3,14 +3,14 @@
     {
       "id": "start",
       "speaker": "Colette",
-      "portrait": "PLACEHOLDER",
+      "portrait": "colette 1r",
       "text": "What's this?",
       "next": "line2"
     },
     {
       "id": "line2",
       "speaker": "Colette",
-      "portrait": "PLACEHOLDER",
+      "portrait": "colette 2r",
       "text": "Huh?"
     }
   ]

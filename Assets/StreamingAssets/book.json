@@ -3,14 +3,14 @@
       {
         "id": "start",
         "speaker": "Colette",
-        "portrait": "PLACEHOLDER",
+        "portrait": "colette 1r",
         "text": "Those who leave Notre Nouveau Monde have no place. Thus, should a member ever decide to leave us, they should be put to death.",
         "next": "line2"
       },
       {
         "id": "line2",
         "speaker": "Colette",
-        "portrait": "PLACEHOLDER",
+        "portrait": "colette 1r",
         "text": "I’ll never forgive them for what they did. "
       }
     ]

@@ -38,7 +38,7 @@
     {
       "id": "line5",
       "speaker": "Colette",
-      "portrait": "PLACEHOLDER",
+      "portrait": "colette 2b",
       "text": "Mom and Dad were in Notre Monde... and they left... for me?",
       "next": "line6"
     },
@@ -73,7 +73,7 @@
     {
       "id": "line10",
       "speaker": "Colette",
-      "portrait": "PLACEHOLDER",
+      "portrait": "colette 2b",
       "text": "Come and get me-! I’m right here... huh? "
     }
   ]

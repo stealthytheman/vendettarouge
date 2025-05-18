@@ -1240,6 +1240,7 @@ MonoBehaviour:
   audioSource: {fileID: 804364596}
   firstClip: {fileID: 8300000, guid: 4d06d1b320f9ff342bd0389751524e80, type: 3}
   secondClip: {fileID: 8300000, guid: 407ac37b6eb9ed948ab95364b34dd8d8, type: 3}
+  thirdClip: {fileID: 0}
   dialogueManager: {fileID: 1264703721}
   dialogueId: start
   jsonFilePath: afterSound.json
@@ -1744,11 +1745,17 @@ MonoBehaviour:
   highlightObject: {fileID: 1586796780}
   dialogueManager: {fileID: 0}
   roomInteractionManager: {fileID: 0}
+  room2InteractionManager: {fileID: 0}
   dialogueId: start
   jsonFilePath: calendar.json
   flagName: 0
   audioSource: {fileID: 0}
   windowAudioClip: {fileID: 0}
+  afterDialogueClip: {fileID: 0}
+  followupStartClip: {fileID: 0}
+  objectToActivate: {fileID: 0}
+  followupJsonFile: afterHide.json
+  followupStartId: start
 --- !u!1 &757449182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,13 +2108,19 @@ MonoBehaviour:
   description: quick, get out!
   normalObject: {fileID: 869464221}
   highlightObject: {fileID: 306972760}
-  dialogueManager: {fileID: 0}
+  dialogueManager: {fileID: 1264703721}
   roomInteractionManager: {fileID: 0}
+  room2InteractionManager: {fileID: 1115756777}
   dialogueId: start
   jsonFilePath: window.json
   flagName: 2
   audioSource: {fileID: 804364596}
-  windowAudioClip: {fileID: 8300000, guid: 46957d2cbf361264dbf97643ec719886, type: 3}
+  windowAudioClip: {fileID: 0}
+  afterDialogueClip: {fileID: 8300000, guid: bd62f5156112f3646a9239629bbedc3d, type: 3}
+  followupStartClip: {fileID: 8300000, guid: 46957d2cbf361264dbf97643ec719886, type: 3}
+  objectToActivate: {fileID: 473790347}
+  followupJsonFile: afterHide.json
+  followupStartId: start
 --- !u!1 &869464221
 GameObject:
   m_ObjectHideFlags: 0

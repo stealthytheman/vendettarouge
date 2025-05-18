@@ -137,19 +137,7 @@ public class Room2InteractionManager : MonoBehaviour
             screenOverlay.color = Color.black;
             yield return new WaitForSeconds(1f);
 
-            // Dialogue setup
-            if (dialogueManager != null)
-            {
-                dialogueManager.OnDialogueComplete += OnDialogueComplete;
-                dialogueManager.LoadDialogue("afterHide.json");
-                dialogueManager.ShowDialogue("start"); 
-                blackBox.SetActive(true); // Hide the black box         
-            }
-            else
-            {
-                Debug.LogWarning("DialogueManager not assigned!");
-            }
-
+            // Black box remains hidden here, dialogue handled elsewhere
             if (room != null)
             {
                 room.transform.position = new Vector3(-0.88867f, -0.72f, room.transform.position.z);
@@ -172,11 +160,10 @@ public class Room2InteractionManager : MonoBehaviour
         }
     }
 
-    private void OnDialogueComplete()
+    
+    public void OnDialogueComplete()
     {
-        dialogueManager.OnDialogueComplete -= OnDialogueComplete;
-
-        // Start fade out and load scene
+        // This can be called externally to trigger fade out and scene load
         StartCoroutine(FadeOutAndLoadScene());
     }
 

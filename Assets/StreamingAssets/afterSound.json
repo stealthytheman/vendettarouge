@@ -10,7 +10,7 @@
       {
         "id": "line2",
         "speaker": "Colette",
-        "portrait": "PLACEHOLDER",
+        "portrait": "colette 1g",
         "text": "Oh great... this is actually happening...",
         "next": "line3"
       },
@@ -24,7 +24,7 @@
       {
         "id": "line4",
         "speaker": "Colette",
-        "portrait": "none",
+        "portrait": "colette 1g",
         "text": "I’m not a stranger.",
         "next": "line5"
       },
@@ -38,7 +38,7 @@
       {
         "id": "line6",
         "speaker": "Colette",
-        "portrait": "none",
+        "portrait": "colette 1g",
         "text": "It’s ugly. Don’t be an artist when you grow up.",
         "next": "line7"
       },
@@ -52,7 +52,7 @@
       {
         "id": "line7",
         "speaker": "Colette",
-        "portrait": "none",
+        "portrait": "colette 1g",
         "text": "Oh yeah? What do you want to do when you grow up?",
         "next": "line8"
       },
@@ -66,14 +66,14 @@
       {
         "id": "line9",
         "speaker": "Colette",
-        "portrait": "none",
+        "portrait": "colette 1g",
         "text": "Kind, huh?",
         "next": "line10"
       },
       {
         "id": "line10",
         "speaker": "Colette",
-        "portrait": "none",
+        "portrait": "colette 2g",
         "text": "Crap. I need to hide."
       }
     ]

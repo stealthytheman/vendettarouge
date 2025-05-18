@@ -4,7 +4,14 @@
         "id": "start",
         "speaker": "Redacted",
         "portrait": "none",
-        "text": "*glass shattering*"
+        "text": "*you open the window to hide*",
+        "next": "line2"
+      },
+      {
+        "id": "line2",
+        "speaker": "Colette",
+        "portrait": "colette 1r",
+        "text": "*whats all that noise??*"
       }
     ]
 }
