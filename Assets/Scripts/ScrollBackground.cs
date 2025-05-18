@@ -6,7 +6,7 @@ public class ScrollBackground : MonoBehaviour
     public float minX = -5f;            // Leftmost position
     public float maxX = 10f;             // Rightmost position
 
-    // Call this from your right arrow button
+   
     public void ScrollRight()
     {
         Vector3 pos = transform.position;
@@ -14,7 +14,7 @@ public class ScrollBackground : MonoBehaviour
         transform.position = pos;
     }
 
-    // Call this from your left arrow button
+   
     public void ScrollLeft()
     {
         Vector3 pos = transform.position;

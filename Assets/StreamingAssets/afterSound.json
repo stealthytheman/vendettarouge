@@ -1,0 +1,82 @@
+{
+    "dialogue": [
+      {
+        "id": "start",
+        "speaker": "Little Colette",
+        "portrait": "colette kid",
+        "text": "Who are you?",
+        "next": "line2"
+      },
+      {
+        "id": "line2",
+        "speaker": "Colette",
+        "portrait": "colette 1g",
+        "text": "Oh great... this is actually happening...",
+        "next": "line3"
+      },
+      {
+        "id": "line3",
+        "speaker": "Little Colette",
+        "portrait": "colette kid",
+        "text": "Mommy told me not to talk to strangers.",
+        "next": "line4"
+      },
+      {
+        "id": "line4",
+        "speaker": "Colette",
+        "portrait": "colette 1g",
+        "text": "I’m not a stranger.",
+        "next": "line5"
+      },
+      {
+        "id": "line5",
+        "speaker": "Little Colette",
+        "portrait": "colette kid",
+        "text": "Okay then! Hey, I see you saw my drawing! Do you like it? It’s a drawing of me, Mommy, and Daddy!",
+        "next": "line6"
+      },
+      {
+        "id": "line6",
+        "speaker": "Colette",
+        "portrait": "colette 1g",
+        "text": "It’s ugly. Don’t be an artist when you grow up.",
+        "next": "line7"
+      },
+      {
+        "id": "line7",
+        "speaker": "Little Colette",
+        "portrait": "colette kid",
+        "text": "That’s mean! Mommy told me you shouldn’t insult other people! Besides, I never wanted to be an artist.",
+        "next": "line8"
+      },
+      {
+        "id": "line7",
+        "speaker": "Colette",
+        "portrait": "colette 1g",
+        "text": "Oh yeah? What do you want to do when you grow up?",
+        "next": "line8"
+      },
+      {
+        "id": "line8",
+        "speaker": "Little Colette",
+        "portrait": "colette kid",
+        "text": "Hm.... I don’t know! But I know that I want to be kind! Just like Mommy and Daddy said I should be!",
+        "next": "line9"
+      },
+      {
+        "id": "line9",
+        "speaker": "Colette",
+        "portrait": "colette 1g",
+        "text": "Kind, huh?",
+        "next": "line10"
+      },
+      {
+        "id": "line10",
+        "speaker": "Colette",
+        "portrait": "colette 2g",
+        "text": "Crap. I need to hide."
+      }
+    ]
+  }
+  
+  

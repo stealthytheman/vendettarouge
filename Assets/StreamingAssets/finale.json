@@ -1,0 +1,10 @@
+{
+    "dialogue": [
+      {
+        "id": "start",
+        "speaker": "Colette",
+        "portrait": "colette 1r",
+        "text": "Now you understand."
+      }
+    ]
+}

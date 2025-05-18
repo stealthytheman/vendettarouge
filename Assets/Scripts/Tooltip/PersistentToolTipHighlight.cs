@@ -78,10 +78,5 @@ public class PersistentToolTipHighlight : MonoBehaviour, IPointerEnterHandler, I
         }
         c.a = 1f;
         whiteOverlay.color = c;
-
-        // Hold full white (optional, remove if you want instant white)
-        // yield return new WaitForSeconds(0.1f);
-
-        // Now stays fully white
     }
 }

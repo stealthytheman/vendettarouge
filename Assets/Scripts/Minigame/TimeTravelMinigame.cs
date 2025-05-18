@@ -23,11 +23,34 @@ public class TimeTravelMinigame : MonoBehaviour
     private bool gameStarted = false;
     private Image flyingObjectImage;
 
-
     public SceneFader sceneFader; // Assign in Inspector
+
+    // New: Looping audio source for sound to start on scene load
+    public AudioSource loopingAudioSource;
 
     void Start()
     {
+        // Start looping audio immediately on scene load
+        if (loopingAudioSource != null)
+        {
+            loopingAudioSource.loop = true;
+            loopingAudioSource.Play();
+        }
+
+        // Adjust difficulty and next scene based on flag
+        if (GameFlags.cameFromRoom == 1)
+        {
+            scoreToPass = 10;
+            speed = 350f;
+            nextSceneName = "bedroom";
+        }
+        else if (GameFlags.cameFromRoom == 2)
+        {
+            scoreToPass = 15;
+            speed = 550f;
+            nextSceneName = "room3";
+        }
+
         timer = gameDuration;
         score = 0;
         gameStarted = false;
