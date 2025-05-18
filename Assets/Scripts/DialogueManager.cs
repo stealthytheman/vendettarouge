@@ -7,25 +7,8 @@ using TMPro;
 using UnityEngine.InputSystem;
 using System;
 
-/*
-    * DialogueManager.cs
-    * Written by: Luke Baxter (2025)
-    * Written for: Unity 6.1
-    * Date: 2025-05-17
-    * This script was written to provide a modular way to handle dialogue for VN's in Unity.
-    * It loads dialogue data stored in a JSON file.
-    * ------------------------------------------------
-    * Things to note:*
-    * - Dialogue is displayed using a TextMeshProUGUI component.
-    * - Portraits are loaded from the Resources folder.
-    * - In order to load the dialogue, call LoadDialogue(*jsonFilePath*).
-    * - In order to show the dialogue, call ShowDialogue(*dialogueId*).
-    * IMPORTANT NOTE: THe JSON file must retain the same structure as the DialogueDataWrapper (DialogueEntry) class.
-    *-------------------------------------------------
-
-*/
 public class DialogueManager : MonoBehaviour
-{   
+{
     [System.Serializable]
     public class DialogueEntry
     {
@@ -46,7 +29,6 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public Image portraitImage;
 
-    // Add these lines:
     public GameObject nameBox;
     public GameObject textBox;
 
@@ -65,27 +47,21 @@ public class DialogueManager : MonoBehaviour
     public GameObject textText;
     public GameObject portrait2;
 
+    // New event that fires when dialogue finishes completely
+    public event Action OnDialogueComplete;
+
     void Start()
     {
-
-
         dialogueBox.SetActive(false);
         nameBox2.SetActive(false);
         textName.SetActive(false);
         textText.SetActive(false);
         portrait2.SetActive(false);
-
-        
-
     }
 
     void Update()
     {
-        // check for input only if the dialogue is active
-        if (!dialogueActive)
-        {
-            return;
-        }
+        if (!dialogueActive) return;
 
         if (Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
@@ -121,20 +97,15 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowDialogue(string id)
     {
-        if (!dialogueMap.ContainsKey(id))
-        {
-            return;
-        }
+        if (!dialogueMap.ContainsKey(id)) return;
 
         dialogueActive = true;
 
-        // Ensure the parent GameObject is active
         if (speakerText.transform.parent != null && !speakerText.transform.parent.gameObject.activeSelf)
         {
             speakerText.transform.parent.gameObject.SetActive(true);
         }
 
-        // Show the objects
         if (nameBox != null) nameBox.SetActive(true);
         if (textBox != null) textBox.SetActive(true);
 
@@ -165,7 +136,7 @@ public class DialogueManager : MonoBehaviour
             }
 
             dialogueText.text += c;
-            yield return new WaitForSeconds(0.08f); // typing speed
+            yield return new WaitForSeconds(0.08f);
         }
 
         isTyping = false;
@@ -180,22 +151,22 @@ public class DialogueManager : MonoBehaviour
         else
         {
             dialogueActive = false;
-            speakerText.transform.parent.gameObject.SetActive(false); // hide the text
+            if (speakerText.transform.parent != null)
+                speakerText.transform.parent.gameObject.SetActive(false);
 
-            // Hide the objects
             if (nameBox != null) nameBox.SetActive(false);
             if (textBox != null) textBox.SetActive(false);
+
+            // Fire the dialogue complete event here
+            OnDialogueComplete?.Invoke();
         }
     }
 
     void LoadPortrait(string portraitName)
     {
-        if (portraitImage == null || string.IsNullOrEmpty(portraitName))
-        {
+        if (portraitImage == null)
             return;
-        }
 
-        // If there is no portrait declared in the JSON, hide the image
         if (string.IsNullOrEmpty(portraitName))
         {
             StartCoroutine(FadePortrait(null));
@@ -203,7 +174,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         Sprite sprite = Resources.Load<Sprite>("Portraits/" + portraitName);
-        if(sprite == null)
+        if (sprite == null)
         {
             Debug.LogError("Portrait not found: " + portraitName);
         }
@@ -211,7 +182,6 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(FadePortrait(sprite));
     }
 
-    // call this method from anywhere where the dialogue algorithm should be summoned
     public void StartDialogue(string id)
     {
         ShowDialogue(id);
@@ -221,7 +191,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (portraitImage == null) yield break;
 
-        // fade out
         float elapsed = 0f;
         Color color = portraitImage.color;
         while (elapsed < fadeDuration)
@@ -232,10 +201,8 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
 
-        // switch sprite
         portraitImage.sprite = newSprite;
 
-        // fade in
         elapsed = 0f;
         while (elapsed < fadeDuration)
         {
@@ -245,9 +212,7 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
 
-        // ensure alpha is 1 at the end
         color.a = 1f;
         portraitImage.color = color;
     }
 }
-

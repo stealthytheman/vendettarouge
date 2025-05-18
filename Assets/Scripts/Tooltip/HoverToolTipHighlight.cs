@@ -15,6 +15,10 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
 
     public int flagName;
 
+    public AudioSource audioSource;  // Assign in Inspector (or find in code)
+    public AudioClip windowAudioClip;  // Assign the audio clip for the window click
+
+
     void Start()
     {
         normalObject.SetActive(true);
@@ -50,26 +54,37 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
     }
 
     public void OnPointerClick(PointerEventData eventData)
+{
+    if (dialogueManager != null && !string.IsNullOrEmpty(dialogueId))
     {
-        //Debug.Log("Clicked! Calling DialogueManager.ShowDialogue with id: " + dialogueId);
-        if (dialogueManager != null && !string.IsNullOrEmpty(dialogueId))
-        {
-            dialogueManager.LoadDialogue(jsonFilePath);
-            dialogueManager.ShowDialogue(dialogueId);
-        }
-        else
-        {
-            Debug.LogWarning("DialogueManager or dialogueId not set!");
-        }
+        dialogueManager.LoadDialogue(jsonFilePath);
+        dialogueManager.ShowDialogue(dialogueId);
 
-        if (roomInteractionManager == null)
+        if (jsonFilePath == "window.json")
         {
-            Debug.LogError("RoomInteractionManager is null!");
+            if (audioSource != null && windowAudioClip != null)
+            {
+                audioSource.PlayOneShot(windowAudioClip);
+            }
+            else
+            {
+                Debug.LogWarning("AudioSource or WindowAudioClip not assigned!");
+            }
         }
-        else
-        {
-            roomInteractionManager.MarkFlagDone(flagName);
-        }
-    
     }
+    else
+    {
+        Debug.LogWarning("DialogueManager or dialogueId not set!");
+    }
+
+    if (roomInteractionManager == null)
+    {
+        Debug.LogError("RoomInteractionManager is null!");
+    }
+    else
+    {
+        roomInteractionManager.MarkFlagDone(flagName);
+    }
+}
+
 }

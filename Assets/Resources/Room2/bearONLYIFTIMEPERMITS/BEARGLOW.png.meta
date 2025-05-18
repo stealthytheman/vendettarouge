@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BEARGLOW_0: -7729820950811877554
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

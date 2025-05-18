@@ -13,6 +13,9 @@ public class PersistentToolTipHighlight1 : MonoBehaviour, IPointerEnterHandler, 
 
     public GameObject watch;
     public UnityEngine.UI.Image whiteOverlay; // Assign in Inspector
+    public AudioClip flashSoundClip;          // Assign in Inspector
+
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -30,8 +33,12 @@ public class PersistentToolTipHighlight1 : MonoBehaviour, IPointerEnterHandler, 
             var c = whiteOverlay.color;
             c.a = 0f;
             whiteOverlay.color = c;
-            // Do NOT set whiteOverlay.gameObject.SetActive(false);
         }
+
+        // Set up the AudioSource
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.clip = flashSoundClip;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -56,8 +63,16 @@ public class PersistentToolTipHighlight1 : MonoBehaviour, IPointerEnterHandler, 
             Debug.LogWarning("DialogueManager or dialogueId not set!");
         }
 
+        // Play the audio just before the flash starts
+        if (flashSoundClip != null)
+        {
+            audioSource.Play();
+        }
+
         if (whiteOverlay != null)
+        {
             StartCoroutine(WhiteFlash());
+        }
     }
 
     private System.Collections.IEnumerator WhiteFlash()
@@ -81,6 +96,7 @@ public class PersistentToolTipHighlight1 : MonoBehaviour, IPointerEnterHandler, 
         c.a = 1f;
         whiteOverlay.color = c;
 
+        GameFlags.cameFromRoom = 1;
         SceneManager.LoadScene("minigame");
     }
 }

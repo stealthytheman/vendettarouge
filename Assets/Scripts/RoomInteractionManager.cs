@@ -12,6 +12,10 @@ public class RoomInteractionManager : MonoBehaviour
 
     public DialogueManager dialogueManager; // Assign in Inspector
 
+    public AudioClip clip1; // Assign in Inspector
+    public AudioClip clip2; // Assign in Inspector
+    public AudioSource audioSource; // Assign in Inspector
+
     public void MarkFlagDone(int identifier)
     {
         flags[identifier] = true;
@@ -44,10 +48,8 @@ public class RoomInteractionManager : MonoBehaviour
 
     private System.Collections.IEnumerator FadeAndFlash(GameObject obj)
     {
-        // Wait 3 seconds before starting the animation
         yield return new WaitForSeconds(3f);
 
-        // Get all SpriteRenderers in this object and its children
         SpriteRenderer[] sprites = obj.GetComponentsInChildren<SpriteRenderer>(true);
         obj.SetActive(true);
 
@@ -69,7 +71,7 @@ public class RoomInteractionManager : MonoBehaviour
             }
             yield return null;
         }
-        // Ensure fully visible
+
         foreach (var sr in sprites)
         {
             if (sr != null)
@@ -80,12 +82,11 @@ public class RoomInteractionManager : MonoBehaviour
             }
         }
 
-        // Flash (blink on/off)
+        // Flash (blink)
         int flashes = 4;
         float flashDuration = 0.5f;
         for (int i = 0; i < flashes; i++)
         {
-            // Hide
             foreach (var sr in sprites)
             {
                 if (sr != null)
@@ -97,7 +98,6 @@ public class RoomInteractionManager : MonoBehaviour
             }
             yield return new WaitForSeconds(flashDuration);
 
-            // Show
             foreach (var sr in sprites)
             {
                 if (sr != null)
@@ -110,15 +110,13 @@ public class RoomInteractionManager : MonoBehaviour
             yield return new WaitForSeconds(flashDuration);
         }
 
-        // Hide the object after animation
         obj.SetActive(false);
 
-        // --- Wait until bedClicked is true ---
         if (bedHighlight != null)
         {
             while (!bedHighlight.bedClicked)
             {
-                yield return null; // Wait until next frame
+                yield return null;
             }
         }
         else
@@ -126,7 +124,7 @@ public class RoomInteractionManager : MonoBehaviour
             Debug.LogWarning("bedHighlight reference not set on RoomInteractionManager!");
         }
 
-        // --- Fade the screen to black ---
+        // Fade to black
         if (screenOverlay != null)
         {
             screenOverlay.gameObject.SetActive(true);
@@ -146,12 +144,11 @@ public class RoomInteractionManager : MonoBehaviour
             overlayColor.a = 1f;
             screenOverlay.color = overlayColor;
 
-            // --- Pulse red ---
+            // Pulse red
             int pulses = 4;
             float pulseDuration = 0.5f;
             for (int i = 0; i < pulses; i++)
             {
-                // Fade to red
                 t = 0;
                 while (t < pulseDuration)
                 {
@@ -159,7 +156,6 @@ public class RoomInteractionManager : MonoBehaviour
                     screenOverlay.color = Color.Lerp(Color.black, Color.red, t / pulseDuration);
                     yield return null;
                 }
-                // Fade back to black
                 t = 0;
                 while (t < pulseDuration)
                 {
@@ -168,29 +164,48 @@ public class RoomInteractionManager : MonoBehaviour
                     yield return null;
                 }
             }
-            // Ensure it's black at the end
+
+            // Ensure black
             screenOverlay.color = Color.black;
 
-            // --- Wait 5 seconds ---
-            yield return new WaitForSeconds(5f);
+            // --- Play audio clips before continuing ---
+            if (audioSource != null)
+            {
+                if (clip1 != null)
+                {
+                    audioSource.clip = clip1;
+                    audioSource.Play();
+                    yield return new WaitForSeconds(clip1.length);
+                }
 
-            // --- Move room to center ---
+                if (clip2 != null)
+                {
+                    audioSource.clip = clip2;
+                    audioSource.Play();
+                    yield return new WaitForSeconds(clip2.length);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("AudioSource is not assigned in RoomInteractionManager!");
+            }
+
+            yield return new WaitForSeconds(1f); // optional pause after audio
+
+            // Move room
             if (room != null)
             {
                 room.transform.position = new Vector3(-0.88867f, -0.72f, room.transform.position.z);
             }
 
-            // --- Show image on the floor ---
+            // Show image
             if (floorImage != null)
             {
                 floorImage.SetActive(true);
             }
 
-            // --- Disable the black overlay ---
-            if (screenOverlay != null)
-            {
-                screenOverlay.gameObject.SetActive(false);
-            }
+            // Disable overlay
+            screenOverlay.gameObject.SetActive(false);
 
             foreach (var script in FindObjectsOfType<HoverToolTipHighlight>())
                 script.enabled = false;

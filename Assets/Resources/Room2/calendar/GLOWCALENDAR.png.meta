@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GLOWCALENDAR_0: 208408591720958854
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

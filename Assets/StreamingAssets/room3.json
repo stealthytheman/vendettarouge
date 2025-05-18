@@ -1,0 +1,110 @@
+{
+  "dialogue": [
+    {
+      "id": "start",
+      "speaker": "Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "No! Come back! But... Mom and Dad.. were a part of Notre Monde? And they left to give me a clean slate..?",
+      "next": "line2"
+    },
+    {
+      "id": "line2",
+      "speaker": "Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "I’ve been killing the mafia this whole time... just for my own family to be ex-mafia?",
+      "next": "line3"
+    },
+    {
+      "id": "line3",
+      "speaker": "Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "Then why... Why have I been doing this? I’ve just thrown away what they’ve given me.",
+      "next": "line4"
+    },
+    {
+      "id": "line4",
+      "speaker": "Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "I’ve thrown away my chance at a free life. This isn’t right. I have to fix this. I have to-",
+      "next": "line5"
+    },
+    {
+      "id": "line5",
+      "speaker": "Teenage Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "Who are you?",
+      "next": "line6"
+    },
+    {
+      "id": "line6",
+      "speaker": "Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "You’re... wait. This place. What’s the date?",
+      "next": "line7"
+    },
+    {
+      "id": "line6",
+      "speaker": "Teenage Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "Hello? I asked you a question-",
+      "next": "line7"
+    },
+    {
+      "id": "line7",
+      "speaker": "Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "And I asked YOU a question, Colette. What is the date?",
+      "next": "line8"
+    },
+    {
+      "id": "line8",
+      "speaker": "Teenage Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "How did you... It’s January 19, 2014. Are you...?",
+      "next": "line9"
+    },
+    {
+      "id": "line9",
+      "speaker": "Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "Yes. And listen, Colette. You can’t kill that mafia member today.",
+      "next": "line10"
+    },
+    {
+      "id": "line10",
+      "speaker": "Teenage Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "But I’ve been tracking him down for months. You of all people should understand.",
+      "next": "line11"
+    },
+    {
+      "id": "line11",
+      "speaker": "Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "Colette. Your parents are ex-mafia. They left that life for you. You’re just going to undo all of their work.",
+      "next": "line12"
+    },
+    {
+      "id": "line12",
+      "speaker": "Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "What you’re doing right now is an insult to their life.",
+      "next": "line13"
+    },
+    {
+      "id": "line13",
+      "speaker": "Teenage Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "But... we need to get revenge for them. We need them to pay.",
+      "next": "line14"
+    },
+    {
+      "id": "line14",
+      "speaker": "Colette",
+      "portrait": "PLACEHOLDER",
+      "text": "This goes against all of what they worked for. Don’t you understand that? You have to stop the cycle."
+    }
+    
+  ]
+}
+

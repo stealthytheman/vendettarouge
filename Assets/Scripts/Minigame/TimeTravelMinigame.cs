@@ -23,11 +23,26 @@ public class TimeTravelMinigame : MonoBehaviour
     private bool gameStarted = false;
     private Image flyingObjectImage;
 
-
     public SceneFader sceneFader; // Assign in Inspector
 
     void Start()
     {
+        // Adjust difficulty and next scene based on flag
+        if (GameFlags.cameFromRoom == 1)
+        {
+            // Came from Room1 = easier difficulty
+            scoreToPass = 10;
+            speed = 350f; // Adjust speed for easier difficulty
+            nextSceneName = "bedroom";  // Change this to your actual scene name
+        }
+        else if (GameFlags.cameFromRoom == 2)
+        {
+            // Came from Room2.5 = harder difficulty
+            scoreToPass = 15;
+            speed = 550f; // Adjust speed for harder difficulty
+            nextSceneName = "room3";            // Change this to your actual scene name
+        }
+
         timer = gameDuration;
         score = 0;
         gameStarted = false;

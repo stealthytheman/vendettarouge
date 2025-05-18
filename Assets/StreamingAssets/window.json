@@ -1,0 +1,10 @@
+{
+    "dialogue": [
+      {
+        "id": "start",
+        "speaker": "Redacted",
+        "portrait": "none",
+        "text": "*glass shattering*"
+      }
+    ]
+}
