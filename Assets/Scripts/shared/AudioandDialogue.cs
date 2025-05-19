@@ -6,7 +6,7 @@ public class AudioAndDialogue : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip firstClip;
     public AudioClip secondClip;
-    public AudioClip thirdClip;  // Plays alongside firstClip if PlayFirstClipOnly is called
+    public AudioClip thirdClip;  // Plays alongside firstClip at the end
 
     public DialogueManager dialogueManager;
     public string dialogueId;
@@ -15,21 +15,25 @@ public class AudioAndDialogue : MonoBehaviour
     public bool footstepsPlaying = false;
 
     private Coroutine currentSequence;
+    private bool shouldTriggerPostDialogueSequence = false;
+
+    void Start()
+    {
+        if (dialogueManager != null)
+        {
+            dialogueManager.OnDialogueComplete += OnDialogueFinished;
+        }
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            PlayFullSequence();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            PlayFirstClipOnly();
+            StartFullSequence();
         }
     }
 
-    void PlayFullSequence()
+    void StartFullSequence()
     {
         if (currentSequence != null)
             StopCoroutine(currentSequence);
@@ -37,24 +41,8 @@ public class AudioAndDialogue : MonoBehaviour
         if (audioSource.isPlaying)
             audioSource.Stop();
 
+        shouldTriggerPostDialogueSequence = true;
         currentSequence = StartCoroutine(PlayTwoClipsThenDialogue());
-    }
-
-    void PlayFirstClipOnly()
-    {
-        if (currentSequence != null)
-            StopCoroutine(currentSequence);
-
-        if (audioSource.isPlaying)
-            audioSource.Stop();
-
-        // Play thirdClip alongside firstClip using PlayOneShot (non-looping)
-        if (thirdClip != null)
-        {
-            audioSource.PlayOneShot(thirdClip);
-        }
-
-        currentSequence = StartCoroutine(PlayOnlyFirstClip());
     }
 
     IEnumerator PlayTwoClipsThenDialogue()
@@ -72,13 +60,12 @@ public class AudioAndDialogue : MonoBehaviour
         audioSource.Play();
         yield return new WaitForSeconds(firstClip.length);
 
-        // Play second clip (ensure not looping)
-        audioSource.loop = false;
+        // Play second clip
         audioSource.clip = secondClip;
         audioSource.Play();
         yield return new WaitForSeconds(secondClip.length);
 
-        // Start dialogue after both clips
+        // Start dialogue
         if (dialogueManager != null && !string.IsNullOrEmpty(dialogueId))
         {
             dialogueManager.LoadDialogue(jsonFilePath);
@@ -92,22 +79,50 @@ public class AudioAndDialogue : MonoBehaviour
         currentSequence = null;
     }
 
-    IEnumerator PlayOnlyFirstClip()
+    void OnDialogueFinished()
+    {
+        if (shouldTriggerPostDialogueSequence)
+        {
+            shouldTriggerPostDialogueSequence = false;
+            RunFootstepAndAudioSequence();
+        }
+    }
+
+    void RunFootstepAndAudioSequence()
     {
         if (audioSource == null || firstClip == null)
         {
-            Debug.LogWarning("Missing audio setup!");
-            yield break;
+            Debug.LogWarning("Missing audioSource or firstClip");
+            return;
         }
 
+        // Set the flag like original P logic
         footstepsPlaying = true;
 
-        audioSource.loop = false;
+        // Play thirdClip as overlay
+        if (thirdClip != null)
+        {
+            audioSource.PlayOneShot(thirdClip);
+        }
+
+        StartCoroutine(PlayFirstClipThenResetFlag());
+    }
+
+    IEnumerator PlayFirstClipThenResetFlag()
+    {
         audioSource.clip = firstClip;
+        audioSource.loop = false;
         audioSource.Play();
         yield return new WaitForSeconds(firstClip.length);
 
         footstepsPlaying = false;
-        currentSequence = null;
+    }
+
+    void OnDestroy()
+    {
+        if (dialogueManager != null)
+        {
+            dialogueManager.OnDialogueComplete -= OnDialogueFinished;
+        }
     }
 }
