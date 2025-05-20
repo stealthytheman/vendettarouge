@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class TimeTravelMinigame : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class TimeTravelMinigame : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI startText;
     public float speed = 300f;
-    public float gameDuration = 10f;
+    public float gameDuration = 15f;
     public int scoreToPass = 3;
     public string nextSceneName = "YourNextScene";
 
@@ -20,7 +21,6 @@ public class TimeTravelMinigame : MonoBehaviour
     private Vector2 direction;
     private bool canScore = true;
     private bool objectActive = true;
-    private bool gameStarted = false;
     private Image flyingObjectImage;
 
     public SceneFader sceneFader; // Assign in Inspector
@@ -28,15 +28,16 @@ public class TimeTravelMinigame : MonoBehaviour
     // New: Looping audio source for sound to start on scene load
     public AudioSource loopingAudioSource;
 
+    // Red flash UI elements
+    public Image redFlashImage;   // Assign your fullscreen red UI Image here (alpha 0 initially)
+    public float flashDuration = 0.2f;
+
+    private Coroutine flashCoroutine;
+
+    public ClockHands clockHands; // Assign in Inspector
+
     void Start()
     {
-        // Start looping audio immediately on scene load
-        if (loopingAudioSource != null)
-        {
-            loopingAudioSource.loop = true;
-            loopingAudioSource.Play();
-        }
-
         // Adjust difficulty and next scene based on flag
         if (GameFlags.cameFromRoom == 1)
         {
@@ -53,7 +54,7 @@ public class TimeTravelMinigame : MonoBehaviour
 
         timer = gameDuration;
         score = 0;
-        gameStarted = false;
+        clockHands.gameStarted = false;
 
         flyingObjectImage = flyingObject.GetComponent<Image>();
 
@@ -62,11 +63,18 @@ public class TimeTravelMinigame : MonoBehaviour
         timerText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
         flyingObject.gameObject.SetActive(false);
+
+        // Make sure red flash is fully transparent at start
+        if (redFlashImage != null)
+        {
+            Color c = redFlashImage.color;
+            redFlashImage.color = new Color(c.r, c.g, c.b, 0f);
+        }
     }
 
     void Update()
     {
-        if (!gameStarted)
+        if (!clockHands.gameStarted)
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
@@ -106,11 +114,20 @@ public class TimeTravelMinigame : MonoBehaviour
 
     void StartGame()
     {
-        gameStarted = true;
+        if (loopingAudioSource != null)
+        {
+            loopingAudioSource.loop = true;
+            loopingAudioSource.Play();
+        }
+
+        clockHands.gameStarted = true;
         startText.gameObject.SetActive(false);
         timerText.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
         LaunchNewObject();
+
+        if (clockHands != null)
+            clockHands.gameStarted = true;
     }
 
     void LaunchNewObject()
@@ -139,12 +156,14 @@ public class TimeTravelMinigame : MonoBehaviour
     void TryHit()
     {
         float distance = Vector2.Distance(flyingObject.anchoredPosition, Vector2.zero);
+
         if (distance < 60f && canScore)
         {
+            // Successful hit
             score++;
             canScore = false;
 
-            // Call the particle effect from MinigameParticles script
+            // Particle effect
             MinigameParticles particles = FindAnyObjectByType<MinigameParticles>();
             if (particles != null)
             {
@@ -163,6 +182,18 @@ public class TimeTravelMinigame : MonoBehaviour
                 Invoke(nameof(LaunchNewObject), 0.3f);
             }
         }
+        else if (distance >= 60f && objectActive)
+        {
+            // Clicked when object NOT in center zone — invalidate it
+            canScore = false;
+            flyingObject.gameObject.SetActive(false);
+            objectActive = false;
+
+            FlashRed();  // Trigger red flash feedback
+
+            // No score added, just spawn a new object shortly
+            Invoke(nameof(LaunchNewObject), 0.3f);
+        }
     }
 
     void EndGame(bool success)
@@ -179,5 +210,35 @@ public class TimeTravelMinigame : MonoBehaviour
         }
 
         enabled = false;
+    }
+
+    void FlashRed()
+    {
+        if (redFlashImage == null) return;
+
+        if (flashCoroutine != null)
+            StopCoroutine(flashCoroutine);
+
+        flashCoroutine = StartCoroutine(RedFlashRoutine());
+    }
+
+    IEnumerator RedFlashRoutine()
+    {
+        Color originalColor = redFlashImage.color;
+        // Set alpha to 0.5 (semi-transparent red)
+        redFlashImage.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0.5f);
+
+        float elapsed = 0f;
+        while (elapsed < flashDuration)
+        {
+            elapsed += Time.deltaTime;
+            // Fade alpha from 0.5 to 0 smoothly
+            float alpha = Mathf.Lerp(0.5f, 0f, elapsed / flashDuration);
+            redFlashImage.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+
+        // Ensure fully transparent at the end
+        redFlashImage.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
     }
 }

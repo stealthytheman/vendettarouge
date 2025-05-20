@@ -17,6 +17,9 @@ public class AudioAndDialogue : MonoBehaviour
     private Coroutine currentSequence;
     private bool shouldTriggerPostDialogueSequence = false;
 
+    // Add this field at the top of AudioAndDialogue.cs
+    public Room2InteractionManager room2InteractionManager; // Assign in Inspector
+
     void Start()
     {
         if (dialogueManager != null)
@@ -84,6 +87,11 @@ public class AudioAndDialogue : MonoBehaviour
         if (shouldTriggerPostDialogueSequence)
         {
             shouldTriggerPostDialogueSequence = false;
+
+            // Flash hidetext after first dialogue
+            if (room2InteractionManager != null)
+                room2InteractionManager.StartHideTextFlash();
+
             RunFootstepAndAudioSequence();
         }
     }

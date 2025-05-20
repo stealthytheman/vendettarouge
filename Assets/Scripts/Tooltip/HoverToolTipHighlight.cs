@@ -30,6 +30,7 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
     public string followupStartId = "start";
 
     private bool waitingForWindowJson = false;
+    public bool windowClicked = false;
 
     void Start()
     {
@@ -74,11 +75,24 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
 
             if (jsonFilePath == "window.json")
             {
+                windowClicked = true;
+
                 if (audioSource != null && windowAudioClip != null)
                     audioSource.PlayOneShot(windowAudioClip);
 
                 dialogueManager.OnDialogueComplete += HandleWindowDialogueComplete;
                 waitingForWindowJson = true;
+
+                // Always start the green flash when the window is clicked
+                if (room2InteractionManager != null)
+                {
+                    Debug.Log("Starting green flash from OnPointerClick");
+                    room2InteractionManager.StartGreenFlash();
+                }
+                else
+                {
+                    Debug.LogWarning("Room2InteractionManager is not assigned!");
+                }
             }
         }
         else
@@ -105,6 +119,8 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
 
         if (objectToActivate != null)
             objectToActivate.SetActive(true);
+
+        // Do NOT set hidetext active here! (It is flashed after the first dialogue.)
 
         StartCoroutine(PlayFollowupStartThenAfterClipAndDialogue());
     }
@@ -133,9 +149,11 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
         // Start loading and showing the follow-up dialogue
         if (!string.IsNullOrEmpty(followupJsonFile) && !string.IsNullOrEmpty(followupStartId))
         {
+            Debug.Log("Subscribing to OnDialogueComplete for followup");
             dialogueManager.OnDialogueComplete += HandleFollowupComplete;
             dialogueManager.LoadDialogue(followupJsonFile);
             dialogueManager.ShowDialogue(followupStartId);
+            Debug.Log("Showing followup dialogue: " + followupStartId);
         }
     }
 
@@ -145,6 +163,7 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
 
         if (room2InteractionManager != null)
         {
+            Debug.Log("Starting green flash in Room2InteractionManager");
             room2InteractionManager.OnDialogueComplete();
         }
         else
