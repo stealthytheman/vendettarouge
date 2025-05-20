@@ -244,7 +244,7 @@ MonoBehaviour:
   clip1: {fileID: 8300000, guid: 407ac37b6eb9ed948ab95364b34dd8d8, type: 3}
   clip2: {fileID: 8300000, guid: 4d06d1b320f9ff342bd0389751524e80, type: 3}
   audioSource: {fileID: 1844321234}
-  backgroundLoopClip: {fileID: 8300000, guid: 8c035fe5984203044be08de8ed879abf, type: 3}
+  backgroundLoopClip: {fileID: 8300000, guid: 18ffef928592b8c40bcfa4e76c87bace, type: 3}
   backgroundLoopSource: {fileID: 1361012488}
 --- !u!4 &111621121
 Transform:
@@ -575,6 +575,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   followupJsonFile: afterHide.json
   followupStartId: start
+  windowClicked: 0
 --- !u!1 &304253191
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +640,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   followupJsonFile: afterHide.json
   followupStartId: start
+  windowClicked: 0
 --- !u!1 &317102402
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,6 +2146,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   followupJsonFile: afterHide.json
   followupStartId: start
+  windowClicked: 0
 --- !u!1 &727201686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,6 +2514,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   followupJsonFile: afterHide.json
   followupStartId: start
+  windowClicked: 0
 --- !u!1 &1057115831
 GameObject:
   m_ObjectHideFlags: 0

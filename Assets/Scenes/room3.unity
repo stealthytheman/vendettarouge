@@ -1192,7 +1192,7 @@ MonoBehaviour:
   secondDialogueFileName: finale.json
   secondStartID: start
   nextSceneName: Credits
-  introAudioClip: {fileID: 8300000, guid: 4a839508d59ddc1449efd93523a1006a, type: 3}
+  introAudioClip: {fileID: 8300000, guid: 7daad7e4d255efe459fc83fee00e1644, type: 3}
   endAudioClip: {fileID: 8300000, guid: cfd92b8bdbc2ed34e91f8005f487d71b, type: 3}
   blackBox: {fileID: 814683365}
 --- !u!1 &1603283176

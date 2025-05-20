@@ -7,7 +7,7 @@ public class HoverToolTipHighlightArt : MonoBehaviour, IPointerEnterHandler, IPo
     public GameObject normalObject;
     public GameObject highlightObject;
 
-    public bool artClicked = false;
+    public static bool artClicked = false;
 
     void Start()
     {
@@ -31,6 +31,8 @@ public class HoverToolTipHighlightArt : MonoBehaviour, IPointerEnterHandler, IPo
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("Art clicked!");
         artClicked = true;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

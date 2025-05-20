@@ -32,6 +32,8 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
     private bool waitingForWindowJson = false;
     public bool windowClicked = false;
 
+    public static bool flag0Active = false;
+
     void Start()
     {
         normalObject.SetActive(true);
@@ -107,6 +109,11 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
         else
         {
             Debug.LogError("RoomInteractionManager is null!");
+        }
+
+        if (flagName == 0)
+        {
+            HoverToolTipHighlight.flag0Active = true;
         }
     }
 

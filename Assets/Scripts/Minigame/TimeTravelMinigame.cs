@@ -12,7 +12,7 @@ public class TimeTravelMinigame : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI startText;
     public float speed = 300f;
-    public float gameDuration = 15f;
+    public float gameDuration = 20f;
     public int scoreToPass = 3;
     public string nextSceneName = "YourNextScene";
 
@@ -42,12 +42,13 @@ public class TimeTravelMinigame : MonoBehaviour
         if (GameFlags.cameFromRoom == 1)
         {
             scoreToPass = 10;
-            speed = 350f;
+            speed = 400f;
             nextSceneName = "bedroom";
         }
         else if (GameFlags.cameFromRoom == 2)
         {
             scoreToPass = 15;
+            gameDuration = 25f;
             speed = 550f;
             nextSceneName = "room3";
         }

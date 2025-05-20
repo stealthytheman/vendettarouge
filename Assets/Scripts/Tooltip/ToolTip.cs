@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEditor.Animations;
 using System.Collections.Generic;
 
 public class ToolTip : MonoBehaviour

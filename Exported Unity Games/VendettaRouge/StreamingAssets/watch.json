@@ -1,0 +1,18 @@
+{
+  "dialogue": [
+    {
+      "id": "start",
+      "speaker": "Colette",
+      "portrait": "colette 1r",
+      "text": "What's this?",
+      "next": "line2"
+    },
+    {
+      "id": "line2",
+      "speaker": "Colette",
+      "portrait": "colette 2r",
+      "text": "Huh?"
+    }
+  ]
+}
+

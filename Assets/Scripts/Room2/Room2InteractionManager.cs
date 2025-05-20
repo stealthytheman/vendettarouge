@@ -22,13 +22,7 @@ public class Room2InteractionManager : MonoBehaviour
     {
         blackBox.SetActive(false); // Hide the black box at the start 
     }
-    void Update()
-{
-    if (Input.GetKeyDown(KeyCode.G))
-    {
-        StartGreenFlash();
-    }
-}
+    
 
 
     

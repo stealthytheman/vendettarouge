@@ -1249,7 +1249,6 @@ MonoBehaviour:
   description: Children's art.
   normalObject: {fileID: 1793752038}
   highlightObject: {fileID: 256393842}
-  artClicked: 0
 --- !u!1 &473790347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1373,8 @@ MonoBehaviour:
   dialogueId: start
   jsonFilePath: afterSound.json
   footstepsPlaying: 0
+  room2InteractionManager: {fileID: 1115756777}
+  hoverToolTipHighlightArt: {fileID: 455791098}
 --- !u!4 &488426617
 Transform:
   m_ObjectHideFlags: 0
@@ -1866,7 +1867,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 713979475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db618eecc5d84b649a010cdd7e557768, type: 3}
+  m_Script: {fileID: 11500000, guid: f245f7b8898e57c40a01d9e006d4e283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   description: 'The date on the calendar reads March 26, 2006. '
@@ -1879,14 +1880,11 @@ MonoBehaviour:
   jsonFilePath: calendar.json
   flagName: 0
   audioSource: {fileID: 0}
-  windowAudioClip: {fileID: 0}
   afterDialogueClip: {fileID: 0}
   followupStartClip: {fileID: 0}
   secondaryLoopSource: {fileID: 0}
   secondaryLoopClip: {fileID: 0}
   objectToActivate: {fileID: 0}
-  followupJsonFile: afterHide.json
-  followupStartId: start
 --- !u!1 &757449182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,10 +2248,11 @@ MonoBehaviour:
   afterDialogueClip: {fileID: 8300000, guid: bd62f5156112f3646a9239629bbedc3d, type: 3}
   followupStartClip: {fileID: 8300000, guid: 46957d2cbf361264dbf97643ec719886, type: 3}
   secondaryLoopSource: {fileID: 804364596}
-  secondaryLoopClip: {fileID: 8300000, guid: 38736e0b32beadc448d1834f4468dc2d, type: 3}
+  secondaryLoopClip: {fileID: 8300000, guid: 9c4189bee6436cc4388bc55ac1806a94, type: 3}
   objectToActivate: {fileID: 473790347}
   followupJsonFile: afterHide.json
   followupStartId: start
+  windowClicked: 0
 --- !u!1 &869464221
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,6 +2930,7 @@ MonoBehaviour:
   floorImage: {fileID: 0}
   room: {fileID: 0}
   blackBox: {fileID: 473790347}
+  windowHighlight: {fileID: 821752842}
 --- !u!1 &1198085225
 GameObject:
   m_ObjectHideFlags: 0

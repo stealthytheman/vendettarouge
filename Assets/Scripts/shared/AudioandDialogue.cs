@@ -19,6 +19,7 @@ public class AudioAndDialogue : MonoBehaviour
 
     // Add this field at the top of AudioAndDialogue.cs
     public Room2InteractionManager room2InteractionManager; // Assign in Inspector
+    public HoverToolTipHighlightArt hoverToolTipHighlightArt; // Assign in Inspector
 
     void Start()
     {
@@ -30,8 +31,12 @@ public class AudioAndDialogue : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (HoverToolTipHighlightArt.artClicked && HoverToolTipHighlight.flag0Active)
         {
+            // Reset the flags so it only triggers once
+            HoverToolTipHighlightArt.artClicked = false;
+            HoverToolTipHighlight.flag0Active = false;
+
             StartFullSequence();
         }
     }
@@ -68,16 +73,29 @@ public class AudioAndDialogue : MonoBehaviour
         audioSource.Play();
         yield return new WaitForSeconds(secondClip.length);
 
-        // Start dialogue
+        // Start dialogue and wait for it to finish
+        bool dialogueDone = false;
+        System.Action handler = () => { dialogueDone = true; };
         if (dialogueManager != null && !string.IsNullOrEmpty(dialogueId))
         {
+            dialogueManager.OnDialogueComplete += handler;
             dialogueManager.LoadDialogue(jsonFilePath);
             dialogueManager.ShowDialogue(dialogueId);
+
+            // Wait until dialogue is finished
+            while (!dialogueDone)
+                yield return null;
+
+            dialogueManager.OnDialogueComplete -= handler;
         }
         else
         {
             Debug.LogWarning("Missing DialogueManager or dialogue ID!");
         }
+
+        // Now flash hidetext
+        if (room2InteractionManager != null)
+            room2InteractionManager.StartHideTextFlash();
 
         currentSequence = null;
     }
@@ -88,9 +106,6 @@ public class AudioAndDialogue : MonoBehaviour
         {
             shouldTriggerPostDialogueSequence = false;
 
-            // Flash hidetext after first dialogue
-            if (room2InteractionManager != null)
-                room2InteractionManager.StartHideTextFlash();
 
             RunFootstepAndAudioSequence();
         }
@@ -104,7 +119,6 @@ public class AudioAndDialogue : MonoBehaviour
             return;
         }
 
-        // Set the flag like original P logic
         footstepsPlaying = true;
 
         // Play thirdClip as overlay
@@ -113,7 +127,8 @@ public class AudioAndDialogue : MonoBehaviour
             audioSource.PlayOneShot(thirdClip);
         }
 
-        StartCoroutine(PlayFirstClipThenResetFlag());
+        // REMOVE or comment out this coroutine if you don't want firstClip to play again:
+        // StartCoroutine(PlayFirstClipThenResetFlag());
     }
 
     IEnumerator PlayFirstClipThenResetFlag()

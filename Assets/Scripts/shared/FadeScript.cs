@@ -15,9 +15,19 @@ public class FadeHandler : MonoBehaviour
 
     private bool hasFaded = false;
 
+    void Start()
+    {
+        if (fadeImage != null)
+        {
+            Color c = fadeImage.color;
+            c.a = 0f;
+            fadeImage.color = c;
+        }
+    }
+
     void Update()
     {
-        if (artScript != null && artScript.artClicked && !hasFaded)
+        if (artScript != null && HoverToolTipHighlightArt.artClicked && !hasFaded)
         {
             hasFaded = true;
             StartCoroutine(FadeSequence());
