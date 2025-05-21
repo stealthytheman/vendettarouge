@@ -1878,7 +1878,7 @@ MonoBehaviour:
   room2InteractionManager: {fileID: 0}
   dialogueId: start
   jsonFilePath: Dialogue/calendar
-  flagName: 0
+  flagName: 1
   audioSource: {fileID: 0}
   afterDialogueClip: {fileID: 0}
   followupStartClip: {fileID: 0}

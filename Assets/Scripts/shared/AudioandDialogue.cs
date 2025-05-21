@@ -31,11 +31,12 @@ public class AudioAndDialogue : MonoBehaviour
 
     void Update()
     {
-        if (HoverToolTipHighlightArt.artClicked && HoverToolTipHighlight.flag0Active)
+        if (HoverToolTipHighlightArt.artClicked && HoverToolTipHighlightCalendar.flag1Active)
         {
+            Debug.Log("Art clicked and flag0Active is true");
             // Reset the flags so it only triggers once
-            HoverToolTipHighlightArt.artClicked = false;
-            HoverToolTipHighlight.flag0Active = false;
+            //HoverToolTipHighlightArt.artClicked = false;
+            HoverToolTipHighlightCalendar.flag1Active = false;
 
             StartFullSequence();
         }

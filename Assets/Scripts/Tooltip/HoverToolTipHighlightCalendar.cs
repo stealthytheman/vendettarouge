@@ -28,7 +28,7 @@ public class HoverToolTipHighlightCalendar : MonoBehaviour, IPointerEnterHandler
 
     private bool waitingForCalendarJson = false;
 
-    public static bool flag0Active = false;
+    public static bool flag1Active = false;
 
     void Start()
     {
@@ -87,9 +87,9 @@ public class HoverToolTipHighlightCalendar : MonoBehaviour, IPointerEnterHandler
             Debug.LogError("RoomInteractionManager is null!");
         }
 
-        if (flagName == 0)
+        if (flagName == 1)
         {
-            HoverToolTipHighlight.flag0Active = true;
+           flag1Active = true;
         }
     }
 }
