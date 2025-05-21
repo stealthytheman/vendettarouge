@@ -1371,7 +1371,7 @@ MonoBehaviour:
   thirdClip: {fileID: 0}
   dialogueManager: {fileID: 1264703721}
   dialogueId: start
-  jsonFilePath: afterSound.json
+  jsonFilePath: Dialogue/afterSound
   footstepsPlaying: 0
   room2InteractionManager: {fileID: 1115756777}
   hoverToolTipHighlightArt: {fileID: 455791098}
@@ -1877,7 +1877,7 @@ MonoBehaviour:
   roomInteractionManager: {fileID: 0}
   room2InteractionManager: {fileID: 0}
   dialogueId: start
-  jsonFilePath: calendar.json
+  jsonFilePath: Dialogue/calendar
   flagName: 0
   audioSource: {fileID: 0}
   afterDialogueClip: {fileID: 0}
@@ -2241,7 +2241,7 @@ MonoBehaviour:
   roomInteractionManager: {fileID: 0}
   room2InteractionManager: {fileID: 1115756777}
   dialogueId: start
-  jsonFilePath: window.json
+  jsonFilePath: Dialogue/window
   flagName: 2
   audioSource: {fileID: 339190307}
   windowAudioClip: {fileID: 0}
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   secondaryLoopSource: {fileID: 804364596}
   secondaryLoopClip: {fileID: 8300000, guid: 9c4189bee6436cc4388bc55ac1806a94, type: 3}
   objectToActivate: {fileID: 473790347}
-  followupJsonFile: afterHide.json
+  followupJsonFile: Dialogue/afterHide
   followupStartId: start
   windowClicked: 0
 --- !u!1 &869464221
@@ -3261,7 +3261,7 @@ RectTransform:
   m_GameObject: {fileID: 1249190227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.63, y: 8.63, z: 8.63}
+  m_LocalScale: {x: 14.02, y: 14.02, z: 14.02}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 326664999}
@@ -3360,7 +3360,7 @@ MonoBehaviour:
   fadeImage: {fileID: 1874633026}
   dialogueManager: {fileID: 0}
   dialogueId: start
-  jsonFilePath: art.json
+  jsonFilePath: Dialogue/art
   fadeDuration: 1
   holdTime: 2
 --- !u!4 &1275702317

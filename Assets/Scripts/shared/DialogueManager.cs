@@ -81,11 +81,16 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void LoadDialogue(string filename)
+    public void LoadDialogue(string resourcePath)
     {
-        string path = Path.Combine(Application.streamingAssetsPath, filename);
-        string json = File.ReadAllText(path);
-        DialogueDataWrapper dataWrapper = JsonUtility.FromJson<DialogueDataWrapper>(json);
+        TextAsset jsonFile = Resources.Load<TextAsset>(resourcePath);
+        if (jsonFile == null)
+        {
+            Debug.LogError("Dialogue not found.");
+            return;
+        }
+
+        DialogueDataWrapper dataWrapper = JsonUtility.FromJson<DialogueDataWrapper>(jsonFile.text);
 
         dialogueMap = new Dictionary<string, DialogueEntry>();
         foreach (var entry in dataWrapper.dialogue)
@@ -93,12 +98,14 @@ public class DialogueManager : MonoBehaviour
             dialogueMap[entry.id] = entry;
         }
 
+        // Activate UI elements
         dialogueBox.SetActive(true);
         nameBox2.SetActive(true);
         textName.SetActive(true);
         textText.SetActive(true);
         portrait2.SetActive(true);
     }
+
 
     public void ShowDialogue(string id)
     {

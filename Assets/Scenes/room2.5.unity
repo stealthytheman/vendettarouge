@@ -208,7 +208,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 187580259}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -921,7 +921,7 @@ RectTransform:
   m_GameObject: {fileID: 818147511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.1, y: 8.1, z: 8.1}
+  m_LocalScale: {x: 21.5, y: 21.5, z: 21.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 73758144}
@@ -1637,7 +1637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1079483589}
   screenOverlay: {fileID: 818147512}
-  dialogueFileName: room2-5.json
+  dialogueFileName: Dialogue/room2-5
   startID: start
   nextSceneName: Minigame
   endAudioClip: {fileID: 8300000, guid: 8137649ca72ae4141b1bb724841c6d1a, type: 3}

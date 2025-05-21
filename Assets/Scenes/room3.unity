@@ -202,7 +202,7 @@ RectTransform:
   m_GameObject: {fileID: 223253962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.1, y: 8.1, z: 8.1}
+  m_LocalScale: {x: 15.91, y: 15.91, z: 15.91}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1939956678}
@@ -853,7 +853,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 11.61, y: 11.61, z: 11.61}
+  m_LocalScale: {x: 17.4, y: 17.4, z: 17.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1187,9 +1187,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 196904067}
   screenOverlay: {fileID: 223253964}
-  firstDialogueFileName: room3.json
+  firstDialogueFileName: Dialogue/room3
   firstStartID: start
-  secondDialogueFileName: finale.json
+  secondDialogueFileName: Dialogue/finale
   secondStartID: start
   nextSceneName: Credits
   introAudioClip: {fileID: 8300000, guid: 7daad7e4d255efe459fc83fee00e1644, type: 3}
