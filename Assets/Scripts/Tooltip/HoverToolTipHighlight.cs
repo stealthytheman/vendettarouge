@@ -75,7 +75,7 @@ public class HoverToolTipHighlight : MonoBehaviour, IPointerEnterHandler, IPoint
             dialogueManager.LoadDialogue(jsonFilePath);
             dialogueManager.ShowDialogue(dialogueId);
 
-            if (jsonFilePath == "window.json")
+            if (jsonFilePath == "Dialogue/window" && HoverToolTipHighlightArt.artClicked)
             {
                 windowClicked = true;
 

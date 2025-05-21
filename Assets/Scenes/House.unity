@@ -564,7 +564,7 @@ MonoBehaviour:
   roomInteractionManager: {fileID: 0}
   room2InteractionManager: {fileID: 0}
   dialogueId: start
-  jsonFilePath: trophy.json
+  jsonFilePath: Dialogue/trophy
   flagName: 0
   audioSource: {fileID: 0}
   windowAudioClip: {fileID: 0}
@@ -573,7 +573,7 @@ MonoBehaviour:
   secondaryLoopSource: {fileID: 0}
   secondaryLoopClip: {fileID: 0}
   objectToActivate: {fileID: 0}
-  followupJsonFile: afterHide.json
+  followupJsonFile: Dialogue/afterHide
   followupStartId: start
   windowClicked: 0
 --- !u!1 &304253191
@@ -629,7 +629,7 @@ MonoBehaviour:
   roomInteractionManager: {fileID: 0}
   room2InteractionManager: {fileID: 0}
   dialogueId: start
-  jsonFilePath: portrait.json
+  jsonFilePath: Dialogue/portrait
   flagName: 1
   audioSource: {fileID: 0}
   windowAudioClip: {fileID: 0}
@@ -638,7 +638,7 @@ MonoBehaviour:
   secondaryLoopSource: {fileID: 0}
   secondaryLoopClip: {fileID: 0}
   objectToActivate: {fileID: 0}
-  followupJsonFile: afterHide.json
+  followupJsonFile: Dialogue/afterHide
   followupStartId: start
   windowClicked: 0
 --- !u!1 &317102402
@@ -1476,6 +1476,8 @@ Transform:
   - {fileID: 727189314}
   - {fileID: 224930809}
   - {fileID: 1721710701}
+  - {fileID: 622847896}
+  - {fileID: 1200283281}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &479107118
@@ -1806,12 +1808,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622847894}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23, y: -2.67, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.42222437, y: -1.2500001, z: 0}
+  m_LocalScale: {x: 0.64102566, y: 0.64102566, z: 0.64102566}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 479107117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &622847897
 MonoBehaviour:
@@ -1829,7 +1831,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   roomInteractionManager: {fileID: 0}
   dialogueId: start
-  jsonFilePath: afterDeath.json
+  jsonFilePath: Dialogue/afterDeath
   watch: {fileID: 1200283277}
   whiteOverlay: {fileID: 0}
 --- !u!60 &622847898
@@ -2135,7 +2137,7 @@ MonoBehaviour:
   roomInteractionManager: {fileID: 0}
   room2InteractionManager: {fileID: 0}
   dialogueId: start
-  jsonFilePath: door.json
+  jsonFilePath: Dialogue/door
   flagName: 3
   audioSource: {fileID: 0}
   windowAudioClip: {fileID: 0}
@@ -2144,7 +2146,7 @@ MonoBehaviour:
   secondaryLoopSource: {fileID: 0}
   secondaryLoopClip: {fileID: 0}
   objectToActivate: {fileID: 0}
-  followupJsonFile: afterHide.json
+  followupJsonFile: Dialogue/afterHide
   followupStartId: start
   windowClicked: 0
 --- !u!1 &727201686
@@ -2361,7 +2363,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   roomInteractionManager: {fileID: 0}
   dialogueId: start
-  jsonFilePath: bed.json
+  jsonFilePath: Dialogue/bed
   bedClicked: 0
 --- !u!1 &1013599111
 GameObject:
@@ -2503,7 +2505,7 @@ MonoBehaviour:
   roomInteractionManager: {fileID: 0}
   room2InteractionManager: {fileID: 0}
   dialogueId: start
-  jsonFilePath: book.json
+  jsonFilePath: Dialogue/book
   flagName: 2
   audioSource: {fileID: 0}
   windowAudioClip: {fileID: 0}
@@ -2512,7 +2514,7 @@ MonoBehaviour:
   secondaryLoopSource: {fileID: 0}
   secondaryLoopClip: {fileID: 0}
   objectToActivate: {fileID: 0}
-  followupJsonFile: afterHide.json
+  followupJsonFile: Dialogue/afterHide
   followupStartId: start
   windowClicked: 0
 --- !u!1 &1057115831
@@ -3073,12 +3075,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200283277}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.236, y: -3.498, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.22264738, y: -1.7807692, z: 0}
+  m_LocalScale: {x: 0.64102566, y: 0.64102566, z: 0.64102566}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 479107117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1200283282
 MonoBehaviour:
@@ -3096,7 +3098,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   roomInteractionManager: {fileID: 0}
   dialogueId: start
-  jsonFilePath: watch.json
+  jsonFilePath: Dialogue/watch
   watch: {fileID: 0}
   whiteOverlay: {fileID: 1864347152}
   flashSoundClip: {fileID: 8300000, guid: 8137649ca72ae4141b1bb724841c6d1a, type: 3}
@@ -3455,7 +3457,7 @@ RectTransform:
   m_GameObject: {fileID: 1318635569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.63, y: 8.63, z: 8.63}
+  m_LocalScale: {x: 16.31, y: 16.31, z: 16.31}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 353675985}
@@ -4801,7 +4803,7 @@ RectTransform:
   m_GameObject: {fileID: 1864347150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.57, y: 8.57, z: 8.57}
+  m_LocalScale: {x: 14.57, y: 14.57, z: 14.57}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 317102406}
@@ -5773,8 +5775,6 @@ SceneRoots:
   - {fileID: 111621121}
   - {fileID: 162955434}
   - {fileID: 353675985}
-  - {fileID: 622847896}
-  - {fileID: 1200283281}
   - {fileID: 317102406}
   - {fileID: 1361012489}
   - {fileID: 1230663123}
